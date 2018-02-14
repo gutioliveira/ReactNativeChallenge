@@ -1,15 +1,14 @@
 import 'react-native';
 import React from 'react';
-import Home from '../../app/screens/home/index';
+import CategoryList from '../../app/components/categoryList';
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
 
 it('renders correctly', () => {
+
     const tree = renderer.create(
-        <Home />
+        <CategoryList category={[{id: 0, title: 'hue'}]} onPress={()=>{}}/>
     ).toJSON();
     expect(tree).toMatchSnapshot();
 });
-
-
