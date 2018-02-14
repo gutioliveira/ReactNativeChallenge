@@ -20,8 +20,12 @@ export default class ProductList extends Component {
     }
 
     componentDidMount(){
+        this.queryProducts(0)
+    }
+
+    queryProducts = (idCategory) => {
         this.setState({isLoading: true})
-        GraphQL.query(GraphQL.POC_CATEGORY_SEARCH, GraphQL.POC_CATEGORY_SEARCH_ARGS(this.props.navigation.state.params.id)).then((res) =>{
+        GraphQL.query(GraphQL.POC_CATEGORY_SEARCH, GraphQL.POC_CATEGORY_SEARCH_ARGS(this.props.navigation.state.params.id, idCategory)).then((res) =>{
 
             this.setState({isLoading: false})
             console.log('productList componentDidMount()')
@@ -45,15 +49,16 @@ export default class ProductList extends Component {
 
     renderProducts = (product) => {
         return(
-            <ProductItem product={{title: product.title, imageUrl: product.imageUrl,
-                price: product.price
-            }}/>
+            <ProductItem product={product}/>
         )
     }
 
     render() {
         return (
             <View style={styles.container}>
+
+                <Text> {"Filtrar por categoria"} </Text>
+
                 <FlatList
                     data={this.state.products}
                     renderItem={({item}) => this.renderProducts(item)}

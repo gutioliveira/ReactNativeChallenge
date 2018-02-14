@@ -19,5 +19,12 @@ export default styles = StyleSheet.create({
     addressList: {
         backgroundColor: 'white',
         flex: 1,
+    },
+    footer: {
+        backgroundColor: 'grey',
+        width: Dimensions.get('window').width,
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 50
     }
 });

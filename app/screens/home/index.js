@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import {
-    View, Image, TouchableWithoutFeedback, Alert
+    View, Image, TouchableWithoutFeedback, Alert, Text
 } from 'react-native';
 
 import DelayTextInput from '../../components/delayTextInput/';
@@ -101,6 +101,12 @@ export default class Home extends Component {
                     <AddressList
                         onPress={(item) => {this.goToProductList(item)}}
                         items={this.state.addressList}/>
+                </View>
+
+                <View style={styles.footer}>
+                    <Text>
+                        {"Created by gustavo.cavalcante.oliveira@live.com"}
+                    </Text>
                 </View>
             </View>
         );
