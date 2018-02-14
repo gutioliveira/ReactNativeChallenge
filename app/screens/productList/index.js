@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
 import {
-    View, FlatList
+    View, FlatList, Text, ScrollView
 } from 'react-native';
 
 import styles from './styles';
 
 import ProductItem from '../../components/productItem';
+import CategoryList from '../../components/categoryList';
+
 import GraphQL from "../../networking/GraphQL";
 
 export default class ProductList extends Component {
@@ -15,12 +17,14 @@ export default class ProductList extends Component {
         super(props)
         this.state = {
             isLoading: false,
-            products: []
+            products: [],
+            categories: []
         };
     }
 
     componentDidMount(){
         this.queryProducts(0)
+        this.queryCategories();
     }
 
     queryProducts = (idCategory) => {
@@ -47,6 +51,19 @@ export default class ProductList extends Component {
         })
     }
 
+    queryCategories = () => {
+        GraphQL.query(GraphQL.ALL_CATEGORIES_SEARCH).then((res) =>{
+
+            this.setState({categories: res.allCategory})
+
+            console.log(res)
+        }).catch((error) => {
+
+            this.setState({isLoading: false})
+            console.log(error)
+        })
+    }
+
     renderProducts = (product) => {
         return(
             <ProductItem product={product}/>
@@ -57,13 +74,22 @@ export default class ProductList extends Component {
         return (
             <View style={styles.container}>
 
-                <Text> {"Filtrar por categoria"} </Text>
+                <ScrollView>
 
-                <FlatList
-                    data={this.state.products}
-                    renderItem={({item}) => this.renderProducts(item)}
-                    keyExtractor={(item, index) => index.toString()}
-                />
+                    <Text> {"Filtrar por categoria"} </Text>
+
+                    <CategoryList onPress={(id) => {
+                        console.log(id)
+                        this.queryProducts(id)
+                    }} category={this.state.categories}/>
+
+                    <FlatList
+                        data={this.state.products}
+                        renderItem={({item}) => this.renderProducts(item)}
+                        keyExtractor={(item, index) => index.toString()}
+                    />
+
+                </ScrollView>
             </View>
         );
     }

@@ -63,7 +63,7 @@ GraphQL.POC_SEARCH_METHOD = 'query pocSearchMethod($now: DateTime!, $algorithm: 
     '      phoneNumber\n' +
     '    }\n' +
     '  }\n' +
-    '}\n'
+    '}\n';
 
 GraphQL.POC_SEARCH_METHOD_ARGS = (lat, long, algorithm = "NEAREST", now= "2017-08-01T20:00:00.000Z") => {
     return {
@@ -72,7 +72,7 @@ GraphQL.POC_SEARCH_METHOD_ARGS = (lat, long, algorithm = "NEAREST", now= "2017-0
         long: long,
         now: now
     }
-}
+};
 
 GraphQL.POC_CATEGORY_SEARCH = 'query pocCategorySearch($id: ID!, $search: String!, $categoryId: Int!) {\n' +
     '  poc(id: $id) {\n' +
@@ -85,12 +85,19 @@ GraphQL.POC_CATEGORY_SEARCH = 'query pocCategorySearch($id: ID!, $search: String
     '      }\n' +
     '    }\n' +
     '  }\n' +
-    '}\n'
+    '}\n';
 
-GraphQL.POC_CATEGORY_SEARCH_ARGS = (id, search = "", categoryId = 0) => {
+GraphQL.POC_CATEGORY_SEARCH_ARGS = (id, categoryId = 0, search = "") => {
     return {
         id: id,
         search: search,
         categoryId: categoryId
     }
-}
+};
+
+GraphQL.ALL_CATEGORIES_SEARCH = 'query allCategoriesSearch {\n' +
+    '  allCategory{\n' +
+    '    title\n' +
+    '    id\n' +
+    '  }\n' +
+    '}\n';
