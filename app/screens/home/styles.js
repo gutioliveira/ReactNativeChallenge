@@ -11,7 +11,7 @@ export default styles = StyleSheet.create({
         width: Dimensions.get('window').width,
         flexDirection: 'row',
         height: 50,
-        backgroundColor: 'red'
+        backgroundColor: 'white'
     },
     delayTextInput: {
         flex: 1

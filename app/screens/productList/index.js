@@ -11,6 +11,8 @@ import CategoryList from '../../components/categoryList';
 
 import GraphQL from "../../networking/GraphQL";
 
+import Spinner from 'react-native-loading-spinner-overlay';
+
 export default class ProductList extends Component {
 
     constructor(props){
@@ -73,6 +75,8 @@ export default class ProductList extends Component {
     render() {
         return (
             <View style={styles.container}>
+
+                <Spinner visible={this.state.isLoading} textContent={"Loading..."} textStyle={{color: '#FFF'}} />
 
                 <ScrollView>
 

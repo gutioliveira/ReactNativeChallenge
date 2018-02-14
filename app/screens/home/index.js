@@ -15,13 +15,16 @@ import SEARCH_ICON from '../../resources/ic_search.png';
 
 import API_KEY from '../../../apiKey'; // DON'T FORGET TO GET YOUR OWN KEY
 
+import Spinner from 'react-native-loading-spinner-overlay';
+
 export default class Home extends Component {
 
     constructor(props){
         super(props)
         this.state = {
             address: '',
-            addressList: []
+            addressList: [],
+            isLoading: false,
         };
     }
 
@@ -60,23 +63,32 @@ export default class Home extends Component {
 
     query = (lat, long) => {
 
+        this.setState({isLoading: true});
+
         GraphQL.query(GraphQL.POC_SEARCH_METHOD, GraphQL.POC_SEARCH_METHOD_ARGS(lat, long)).then( (res) => {
 
             console.log(res)
             if ( res.pocSearch && res.pocSearch.length > 0 )
-                this.props.navigation.navigate('ProductList', {id: res.pocSearch[0].id})
+                this.setState({isLoading: false}, () => {
+                    this.props.navigation.navigate('ProductList', {id: res.pocSearch[0].id})
+                })
             else
-                Alert.alert('Erro!', 'Não existe nada no endereço informado!')
+                Alert.alert('Erro!', 'Não existe nada no endereço informado!',[
+                    {text: 'OK', onPress: () => this.setState({isLoading: false})},
+                ])
         }).catch((error) => {
 
             console.log('ERROR')
             console.log(error)
+            this.setState({isLoading: false})
         });
     }
 
     render() {
         return (
             <View style={styles.container}>
+
+                <Spinner visible={this.state.isLoading} textContent={"Loading..."} textStyle={{color: '#FFF'}} />
 
                 <View style={styles.containerHorizontal}>
                     <DelayTextInput
