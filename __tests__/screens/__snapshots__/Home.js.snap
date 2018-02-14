@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "white",
+        "flexDirection": "row",
+        "height": 50,
+        "width": 750,
+      }
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      onPauseText={[Function]}
+      pauseDelay={500}
+      placeholder="buscar"
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    />
+    <Image
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      hitSlop={undefined}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      source={
+        Object {
+          "testUri": "../../../app/resources/ic_search.png",
+        }
+      }
+      style={
+        Object {
+          "height": 50,
+          "width": 50,
+        }
+      }
+      testID={undefined}
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "white",
+        "flex": 1,
+      }
+    }
+  >
+    <RCTScrollView
+      data={Array []}
+      disableVirtualization={false}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      horizontal={false}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      numColumns={1}
+      onContentSizeChange={[Function]}
+      onEndReachedThreshold={2}
+      onLayout={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      stickyHeaderIndices={Array []}
+      updateCellsBatchingPeriod={50}
+      viewabilityConfigCallbackPairs={Array []}
+      windowSize={21}
+    >
+      <View />
+    </RCTScrollView>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "grey",
+        "height": 50,
+        "justifyContent": "center",
+        "width": 750,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+    >
+      Created by gustavo.cavalcante.oliveira@live.com
+    </Text>
+  </View>
+</View>
+`;
